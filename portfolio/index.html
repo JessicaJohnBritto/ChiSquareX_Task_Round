@@ -1,1 +1,505 @@
+<!doctype html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Hi, Jane here</title>
+    <!-- Bootstrap CSS 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css?fbclid=IwAR3z6ibi_qr1AesTbEeaJ4TrMKjvp2jFm-0-A7ri0XRJeXccXW_GdIE7It0">
+    <link rel=stylesheet type="text/css" href="css/style.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css?fbclid=IwAR3z6ibi_qr1AesTbEeaJ4TrMKjvp2jFm-0-A7ri0XRJeXccXW_GdIE7It0">
+    <link rel='shortcut icon' type='image/png' href='https://dynl.mktgcdn.com/p/nhl_oY69BQWdyact2Zp1LL3cW3qRuaAKwQYHOo9kbl0/500x500.png'>
+    </head>
+    <style>
+        *, *::after, *::before{
+            box-sizing: border-box;
+        }
+        
+        :root{
+            --ff-primary:'Source Sans Pro', sans-serif;
+            --ff-secondary: 'Source Code Pro', monospace;
+        
+            --fw-reg:300;
+            --fw-bold:900;
+        
+            --clr-light:#fff;
+            --clr-dark: #303030;
+            --clr-accent: #16e0bd;
+        
+            --fs-h1: 3rem;
+            --fs-h2: 2.25rem;
+            --fs-h3: 1.25rem;
+            --fs-body: 1rem;
+        
+            --bs: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25),
+                  0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
+        }
+        
+        @media(min-width:800px){
+            :root{
+            --fs-h1: 4.5rem;
+            --fs-h2: 3.75rem;
+            --fs-h3: 1.5rem;
+            --fs-body: 1.125rem;
+            }
+        }
+        
+        body{
+            background: var(--clr-light);
+            color: var(--clr-dark);
+            margin:0;
+            font-family: var(--ff-primary);
+            font-size: var(--fs-body);
+            line-height: 1.6;
+        }
+        
+        section{
+            padding: 5em 2em;
+        }
+        
+        img{
+            display: block;
+            max-width: 100%;
+        }
+        
+        strong{
+            font-weight:var(--fw-bold);
+        }
+        
+        :focus{
+            outline:3px solid var(--clr-accent);
+            outline-offset: 3px;
+        }
+        
+        .btn{
+            display: inline-block;
+            padding:0.5em 1.5em;
+            background:var(--clr-accent);
+            color: var(--clr-dark);
+            text-decoration: none;
+            cursor: pointer;
+            font-size:0.8rem;
+            text-transform: 2px;
+            font-weight: transform 200ms ease-in-out;
+        }
+        
+        .btn:hover{
+            transform: scale(1.1);
+        }
+        
+        h1,h2,h3{
+            line-height: 1;
+            margin:0;
+        }
+        
+        h1{
+            font-size: var(--fs-h1);
+        }
+        
+        h2{
+            font-size: var(--fs-h2);
+        }
+        
+        h3{
+            font-size: var(--fs-h3);
+        }
+        
+        .section__title{
+            margin-bottom: .25em;
+        }
+        
+        .section__title--intro{
+            font-weight: var(--fw-reg);
+        }
+        
+        .section__title--intro strong{
+            display: block;
+        }
+        
+        .section__subtitle{
+            margin: 0;
+            font-size:var(--fs-h3);
+        }
+        
+        .section__subtitle--intro, .section__subtitle--about{
+            background: var(--clr-accent);
+            padding: 0.25em 1em;
+            font-family: var(--ff-secondary);
+            margin-bottom: 1em;
+        }
+        
+        .section__subtitle--work{
+            color: var(--clr-accent);
+            font-weight:var(--fw-bold);
+            margin-bottom:2em;
+        }
 
+        .intro{
+            position: relative;
+        }
+        
+        .intro__img{
+            box-shadow: var(--bs);
+        }
+        
+        .section__subtitle--intro{
+            display:inline-block;
+        }
+        @media (min-width: 600px){
+            .intro{
+                display:grid;
+                width: min-content;
+                margin: 0 auto;
+                grid-column: 1em;
+                grid-template-areas: 
+                'img title'
+                'img subtitle';
+                grid-template-columns: min-content max-content;
+            }
+        
+            .intro__img{
+                grid-area: img;
+                min-width: 250px;
+                position: relative;
+                z-index: 2;
+            }
+        
+            .section__subtitle--intro{
+                align-self: start;
+                grid-column: -1/1;
+                grid-row: 2;
+                text-align: right;
+                position: relative;
+                left:-1.5em;
+                width:calc(100% + 1.5em);
+            }
+        }
+        
+        .my-services{
+            background-color: var(--clr-dark);
+            background-size: cover;
+            background-blend-mode: multiply;
+            color:var(--clr-light);
+            text-align: center;
+        }
+        
+        .section__title--services{
+            color: var(--clr-accent);
+            position: relative;
+        }
+        
+        .section__title--services::after{
+            content:'';
+            display: block;
+            width:2em;
+            height:1px;
+            margin:0.5em auto 1em;
+            background: var(--clr-light);
+            opacity: 0.25;
+        }
+        
+        .services{
+            margin-bottom: 4em;
+        }
+        
+        .service{
+            max-width: 500px;
+            margin:0 auto;
+        }
+        
+        @media (min-width:800px){
+            .services{
+                display:flex;
+                max-width: 1000px;
+                margin-left:auto;
+                margin-right: auto;
+            }
+        
+            .service +  .service{
+                margin-left: 2em;
+            }
+        }
+        
+        .about-me{
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .about-me__img{
+            box-shadow: var(--bs);
+        }
+        
+        @media (min-width:600px){
+            .about-me{
+                display:grid;
+                grid-template-columns: 1fr 200px;
+                grid-template-areas: "title img"
+                                    "subtitle img"
+                                    "text img";
+        
+                grid-column-gap: 2em;
+            }
+        
+            .section__title--about{
+                grid-area: title;
+            }
+        
+            .section__subtitle--about{
+                grid-column: 1/-1;
+                grid-row:2;
+                position: relative;
+                left: -1em;
+                width:calc(100% + 4em);
+                padding-left: 1em;
+                padding-right: calc(200px + 4em);
+            }
+        
+            .about-me__img{
+                grid-area: img;
+                position: relative;
+                z-index: 2;
+            }
+        }
+        
+        .my-work{
+            background-color: var(--clr-dark);
+            color: var(--clr-light);
+            text-align: center;
+        }
+        
+        .portfolio{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        
+        .portfolio__item{
+            background: var(--clr-accent);
+            overflow: hidden;
+        }
+        
+        .portfolio__image{
+            transition: 
+            transform 750ms cubic-bezier(0.5, 0, 0.5,1),
+            opacity 250ms linear;
+        }
+        
+        .portfolio__item:focus{
+            position: relative;
+            z-index: 2;
+        }
+        
+        .portfolio__img:hover, .portfolio__item:focus .portfolio__img{
+            transform: scale(1.2);
+            opacity:0.5;
+        }
+        
+       
+        .footer{
+            background-color: #111; text-align: center;
+        padding: 2.5em 0; color:beige;
+        
+        font-size: var(--fs-h3);
+        }
+        .footer a{
+            color:inherit;
+            text-decoration: none;
+        }
+
+        .footer__link{
+            font-weight: var(--fw-bold);
+        }
+        
+        .footer__link:hover, .social-list__link:hover{
+            opacity:0.7;
+        }
+
+        .footer__link:hover{
+            text-decoration: underline;
+        }
+        
+        .social-list__item{
+            margin: 0 0.5em;
+        }
+
+        .social-list__link{
+            padding: 0.5em;
+        }
+.navbar{
+    background-color: var(--clr-accent);
+    color: var(--clr-light);
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size:20px
+}
+.nav-list{
+    list-style-type: none;
+
+}
+
+.nav-list .list-item{
+    display: inline-block;
+    padding:20px 10px;
+}
+
+.navbar a{
+    color:white;
+    text-decoration: none;
+}
+.navbar a:hover{
+    color: var(--clr-dark);
+}
+.primary-icon{
+    height:40px;
+}
+.menu-line{
+height:3px;
+width: 20px;background-color: var(--clr-light);
+margin-bottom: 4px;
+}
+
+@media all and (max-width:480px){
+    .navbar{
+ flex-direction: column;
+ position: relative;
+    }
+    .menu{
+        display:block;
+        position:absolute;
+        right: 15px;
+        top: 15px;
+    }
+    .navbar .primary-icon{
+        width: 0%;
+    }
+    .nav-list{
+        list-style-type: none;
+        width: 100%;
+        text-align: center;
+        padding-top: 10px;
+    }
+}
+    </style>
+    <body>
+        
+
+        <nav class="navbar">
+            <div>
+                <a href'#>
+                <img class="primary-icon" src="https://images-platform.99static.com//WTrMjPQwP8Mveu4WZ8uN9kj-Yr8=/0x0:600x600/fit-in/590x590/projects-files/56/5672/567261/e0ceaeff-4944-4a7a-b275-28009b651985.jpg">
+            </a></div>
+                <ul class="nav-list">
+                    <li class="list-item"><a href="#">What I do</a></li>
+                    <li class="list-item"><a href="#">About Me</a></li>
+                    <li class="list-item"><a href="#">My Services</a></li>
+                </ul>
+            <div class="menu">
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+            </div>
+        </nav>
+
+        <section class="intro" id="home">
+            <h1 class="section__title section__title--intro">
+                Hi, I am <strong>Jane</strong>
+            </h1>
+            <p class="scetion__subtitle section__subtitle--intro">Developer</p>
+            <img src="img/dev-jane-01.jpg" alt="jane smiling" class="intro__img">
+        </section>
+
+        <section class="my-services" id="services" style='background-image:url("img/services-bg.jpg")'>
+            <h2 class="section__title section__title--services">What I do</h2>
+            <div class="services">
+                <div class="service">
+                    <h3>Header1 to be filed</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+
+                <div class="service">
+                    <h3>Header2 to be filled</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+
+                <div class="service">
+                    <h3>Header3 to be filled</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+            </div>
+            <a href=#work class="btn">My work</a>
+        </section>
+
+        <section class="about-me" id="about">
+            <h2 class="section__title section__title--about">Who I am</h2>
+            <p class="section__subtitle section__subtitle--about">Designer</p>
+            <div class="about-me__body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Text to be filled</p>
+            </div>
+            <img src="img/dev-jane-02.jpg" alt="Jane leaning against a bus" class="about-me__img">
+        </section>
+
+        <section class="my-work" id="work">
+            <h2 class="section__title section__title--work">My work</h2>
+            <p class="section__subtitle section__subtitle--work">My selection of work</p>
+
+            <div class="portfolio">
+                <a href="#" class="portfolio__item">
+                    <img src="img/portfolio-01.jpg" alt="" class="portfolio__img">
+                </a>
+
+                <a href="#" class="portfolio__item">
+                    <img src="img/portfolio-02.jpg" alt="" class="portfolio__img">
+                </a>
+
+                <a href="#" class="portfolio__item">
+                    <img src="img/portfolio-03.jpg" alt="" class="portfolio__img">
+                </a>
+
+                <a href="#" class="portfolio__item">
+                    <img src="img/portfolio-04.jpg" alt="" class="portfolio__img">
+                </a>
+
+                <a href="#" class="portfolio__item">
+                    <img src="img/portfolio-05.jpg" alt="" class="portfolio__img">
+                </a>
+
+                <a href="#" class="portfolio__item">
+                    <img src="img/portfolio-06.jpg" alt="" class="portfolio__img">
+                </a>
+
+                <a href="#" class="portfolio__item">
+                    <img src="img/portfolio-07.jpg" alt="" class="portfolio__img">
+                </a>
+
+                <a href="#" class="portfolio__item">
+                    <img src="img/portfolio-08.jpg" alt="" class="portfolio__img">
+                </a>
+
+                <a href="#" class="portfolio__item">
+                    <img src="img/portfolio-09.jpg" alt="" class="portfolio__img">
+                </a>
+
+                <a href="#" class="portfolio__item">
+                    <img src="img/portfolio-10.jpg" alt="" class="portfolio__img">
+                </a>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <a href="#" class="footer__link">Hello@jane.dev</a>
+            <ul class="social-list" style="list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 2em 0 0;
+            padding:0;">
+                <li class="social-list__item"><a class="social-list__link" href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                <li class="social-list__item"><a class="social-list__link" href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+                <li class="social-list__item"><a class="social-list__link" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            </ul>
+        </footer>
+
+    </body>
+</html>
